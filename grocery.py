@@ -8,14 +8,15 @@ from flask import Flask, request
 app = Flask(__name__)
 
 train_file = './grocery_train.txt'
+data_dir = 'data'
 
 # aggregate category sources into training file from food/ dir
-filenames = [f for f in listdir('food')]
+filenames = [f for f in listdir(data_dir)]
 items = []
 
 for filename in filenames:
     label = filename.replace(".txt", "")
-    file = open(f"food/{filename}", "r")
+    file = open(f"{data_dir}/{filename}", "r")
     items = items  + list(map(lambda x: f"__label__{label} {x}", file.readlines()));
 
 with open(train_file, 'w') as file:

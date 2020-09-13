@@ -22,6 +22,7 @@ for filename in filenames:
 with open(train_file, 'w') as file:
         file.writelines(i for i in items)
 
+# initialize and train model
 arg = sw.args()
 arg.trainFile = train_file
 arg.trainMode = 0		
@@ -36,6 +37,7 @@ sp.saveModelTsv('tagged_model.tsv')
 sp.initFromSavedModel('tagged_model')
 sp.initFromTsv('tagged_model.tsv')
 
+# serve predictions from root, pass item string in qs
 @app.route('/')
 def hello():
     item = request.args.get('item')

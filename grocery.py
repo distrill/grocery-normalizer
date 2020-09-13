@@ -1,10 +1,11 @@
 import starwrap as sw
+import json
 import numpy as np
 from operator import itemgetter
 from os import listdir
-from datetime import datetime
+from flask import Flask, request
 
-print(datetime.now().strftime("%H:%M:%S"))
+app = Flask(__name__)
 
 train_file = './grocery_train.txt'
 
@@ -31,15 +32,24 @@ sp.train()
 sp.saveModel('tagged_model')
 sp.saveModelTsv('tagged_model.tsv')
 
-
 sp.initFromSavedModel('tagged_model')
 sp.initFromTsv('tagged_model.tsv')
 
-dict_obj = sp.predictTags('ice cream', 6)
-dict_obj = sorted( dict_obj.items(), key = itemgetter(1), reverse = True )
+@app.route('/')
+def hello():
+    item = request.args.get('item')
+    dict_obj = sp.predictTags(item, 6)
+    dict_obj = sorted( dict_obj.items(), key = itemgetter(1), reverse = True )
 
-print(datetime.now().strftime("%H:%M:%S"))
+    # for tag, prob in dict_obj:
+    # print( tag, prob )
+    print(dict_obj[0])
+    return {
+        "version": "0.0.1",
+        "data": dict_obj,
+    }
 
-for tag, prob in dict_obj:
-    print( tag, prob )
+print(__name__)
+if __name__ == '__main__':
+    app.run()
 

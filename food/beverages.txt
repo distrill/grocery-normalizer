@@ -1,0 +1,20 @@
+beer
+club soda
+tonic
+champagne
+gin
+juice
+mixers
+red wine
+white wine
+rum
+saké
+soda pop
+soda
+pop
+sports drink
+whiskey
+vodka
+tea
+coffee
+decaf

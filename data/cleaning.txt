@@ -1,13 +1,13 @@
-Air freshener
-Bathroom cleaner
-Bleach
-Detergent
-Dish soap
-Dishwasher soap
-Garbage bags
-Glass cleaner
+air freshener
+bathroom cleaner
+bleach
+detergent
+dish soap
+dishwasher soap
+garbage bags
+glass cleaner
 mop
-Mop head
-Vacuum bags
-Sponges
-Scrubbers
+mop head
+vacuum bags
+sponges
+scrubbers

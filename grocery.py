@@ -40,7 +40,7 @@ sp.initFromTsv('tagged_model.tsv')
 # serve predictions from root, pass item string in qs
 @app.route('/')
 def hello():
-    item = request.args.get('item')
+    item = request.args.get('item').lower()
     dict_obj = sp.predictTags(item, 6)
     dict_obj = sorted( dict_obj.items(), key = itemgetter(1), reverse = True )
 
